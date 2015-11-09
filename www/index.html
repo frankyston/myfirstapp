@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <title></title>
+
+    <link href="lib/ionic/css/ionic.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+
+    <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
+    <link href="css/ionic.app.css" rel="stylesheet">
+    -->
+
+    <!-- ionic/angularjs js -->
+    <script src="lib/ionic/js/ionic.bundle.js"></script>
+
+    <!-- cordova script (this will be a 404 during development) -->
+    <script src="cordova.js"></script>
+
+    <script src="lib/ngCordova/dist/ng-cordova.min.js"></script>
+
+    <!-- Google Maps -->
+    <script src="lib/lodash/lodash.min.js"></script>
+    <script src='lib/angular-google-maps/dist/angular-google-maps.min.js'></script>
+    <script src='lib/angular-simple-logger/dist/angular-simple-logger.min.js'></script>
+    <script src='//maps.googleapis.com/maps/api/js?sensor=false'></script>
+
+    <!-- your app's js -->
+    <script src="js/app.js"></script>
+  </head>
+  <body ng-app="starter">
+
+    <ion-pane>
+      <ion-header-bar class="bar-positive">
+        <h1 class="title">My First App</h1>
+      </ion-header-bar>
+      <ion-content ng-controller="appCtrl" class="padding">
+
+        <div class="card">
+          <div class="item-image">
+            <img ng-src="{{imagem}}" alt="" />
+          </div>
+
+          <div class="item item-map" ng-style="showMap">
+            <ui-gmap-google-map center='map.center' zoom='map.zoom'>
+              <ui-gmap-markers idKey="marker.id" coords="marker.coords" options="marker.options"></ui-gmap-markers>
+            </ui-gmap-google-map>
+          </div>
+
+          <div class="item">
+            {{marker | json}}
+          </div>
+          <div class="item item-checkbox">
+             <label class="checkbox">
+               <input type="checkbox" ng-model="geolocalizacao.value">
+             </label>
+             Pegar localização
+          </div>
+
+          <div class="item">
+            <button class="button button-block button-positive" ng-click="capturar()">Capturar</button>
+          </div>
+
+        </div>
+
+      </ion-content>
+    </ion-pane>
+  </body>
+</html>
